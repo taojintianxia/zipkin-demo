@@ -1,4 +1,4 @@
-package com.github.nianjun.config;
+package com.github.taojintianxia.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;

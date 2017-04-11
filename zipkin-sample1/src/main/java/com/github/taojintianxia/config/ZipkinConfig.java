@@ -1,4 +1,4 @@
-package com.github.nianjun.config;
+package com.github.taojintianxia.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -21,7 +21,6 @@ public class ZipkinConfig {
     @Autowired
     private ZipkinProperties properties;
 
-
     @Bean
     public SpanCollector spanCollector() {
         HttpSpanCollector.Config config =
@@ -30,7 +29,6 @@ public class ZipkinConfig {
                         .flushInterval(properties.getFlushInterval()).build();
         return HttpSpanCollector.create(properties.getUrl(), config, new EmptySpanCollectorMetricsHandler());
     }
-
 
     @Bean
     public Brave brave(SpanCollector spanCollector) {

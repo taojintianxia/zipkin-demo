@@ -1,4 +1,4 @@
-package com.github.nianjun.controller;
+package com.github.taojintianxia.controller;
 
 import java.io.IOException;
 import java.util.Random;
@@ -18,9 +18,12 @@ public class HomeController {
 
     private Random random = new Random();
 
+    private static final int MAX_WORKING_TIME = 1000;
+
+
     @RequestMapping("start")
     public String start() throws InterruptedException, IOException {
-        int sleep = random.nextInt(100);
+        int sleep = random.nextInt(MAX_WORKING_TIME);
         TimeUnit.MILLISECONDS.sleep(sleep);
         Request request = new Request.Builder().url("http://localhost:9090/foo").get().build();
         Response response = client.newCall(request).execute();
