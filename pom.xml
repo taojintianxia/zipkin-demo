@@ -2,22 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.github.taojintianxia</groupId>
-	<artifactId>zipkin-demo</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
-	<packaging>pom</packaging>
-
-	<modules>
-		<module>zipkin-sample1</module>
-		<module>zipkin-sample2</module>
-	</modules>
-
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.8</java.version>
-		<maven-compiler-plugin.version>3.6</maven-compiler-plugin.version>
-		<zipkin.brave.verion>3.9.0</zipkin.brave.verion>
-	</properties>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -25,7 +9,33 @@
 		<version>1.3.6.RELEASE</version>
 	</parent>
 
+	<groupId>com.github.taojintianxia</groupId>
+	<artifactId>zipkin-demo</artifactId>
+	<version>0.2.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>zipkin-sample1</module>
+		<module>zipkin-sample2</module>
+		<module>zipkin-sample3</module>
+		<module>zipkin-sample4</module>
+		<module>zipkin-sample5</module>
+		<module>zipkin-sample6</module>
+		<module>zipkin-sample7</module>
+	</modules>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+		<maven-compiler-plugin.version>3.6</maven-compiler-plugin.version>
+		<zipkin.brave.verion>3.9.0</zipkin.brave.verion>
+		<lombok.version>1.16.16</lombok.version>
+		<guava.version>21.0</guava.version>
+	</properties>
+
 	<dependencies>
+
+		<!-- spring boot starter -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -34,10 +44,22 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+		<!-- lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
 		</dependency>
 
 		<!-- zipkin brave -->
