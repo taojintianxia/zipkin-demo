@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.github.taojintianxia.config.BasicConfig;
+import com.github.taojintianxia.config.ZipkinProperties;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -25,13 +26,16 @@ public class HomeController {
     @Autowired
     private BasicConfig basicConfig;
 
+    @Autowired
+    private ZipkinProperties zipkinProperties;
+
     private Random random = new Random();
 
     private static final int MAX_WORKING_TIME = 1000;
 
-    @RequestMapping("start")
+    @RequestMapping("serviceF")
     public String start() throws InterruptedException, IOException {
-        String result = "";
+        String result = zipkinProperties.getServiceName() + " is executing";
         int sleep = random.nextInt(MAX_WORKING_TIME);
         TimeUnit.MILLISECONDS.sleep(sleep);
         List<String> uris = basicConfig.getRedirectURI();
@@ -41,7 +45,8 @@ public class HomeController {
             for (String uri : uris) {
                 Request request = new Request.Builder().url(uri).get().build();
                 Response response = client.newCall(request).execute();
-                result = result + "\n [ServericeA works on " + sleep + " ms]" + response.body().toString();
+                result = result + "\n " + zipkinProperties.getServiceName() + " works on " + sleep + " ms]"
+                        + response.body().toString();
             }
         }
         System.out.println("----------------:" + uris.get(1));
